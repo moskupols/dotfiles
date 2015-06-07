@@ -1,0 +1,8 @@
+[user]
+	name = Feodor Alexeev
+	email = feodor.alexeev@gmail.com
+[core]
+[color]
+	ui = auto
+[push]
+	default = simple
