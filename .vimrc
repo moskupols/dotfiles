@@ -168,6 +168,7 @@ let use_0x = 1
 nnoremap <Leader>gs :Gstatus<Enter>
 nnoremap <Leader>gp :Gpush<Enter>
 nnoremap <Leader>gl :Glog<Enter>
+nnoremap <Leader>gcc :Gcommit <Enter>
 nnoremap <Leader>gca :Gcommit -a<Enter>
 nnoremap <Leader>gw :Gwrite<Enter>
 " }}}
