@@ -2,6 +2,7 @@ let use_0x = 1
 
 " General options {{{
     set nocompatible
+    syntax on
 
     set autoindent
     set smartindent
@@ -23,7 +24,7 @@ let use_0x = 1
     set number
     set ruler " relativenumber
 
-    syntax on
+    set concealcursor=inv conceallevel=2
 
     set hlsearch incsearch
     set gdefault " replace with g flag
@@ -139,7 +140,17 @@ let use_0x = 1
     let g:airline_right_sep='‹'
 " }}}
 
-" ft-specific {{{
+" spellcheck {{{
+    set spell
+    " set spelllang ru_yo
+    " set spelllang en_us
+" }}}
+"Syntastic {{{
+    let g:syntastic_enable_signs=1
+    let g:syntastic_c_compiler = 'clang'
+    let g:syntastic_cpp_compiler = 'clang++'
+    let g:syntastic_cpp_compiler_options = ' -std=c++11 '
+" }}}
 
     " ycm {{{
         let g:ycm_filetype_blacklist = {}
@@ -153,58 +164,54 @@ let use_0x = 1
         let g:ycm_confirm_extra_conf = 0
     " }}}
 
-    " latex-suite {{{
-        set grepprg=grep\ -nH\ $*
+" ft-specific {{{
+augroup ftSpecific
+    autocmd!
+
+    " latex {{{
         let g:tex_flavor='latex'
 
-        set concealcursor=inv
-        set conceallevel=2
-        autocmd Syntax tex set conceallevel=0 iskeyword+=: sw=2
+        func! SetupLatexSuite()
+            setlocal conceallevel=0 iskeyword+=: sw=2
+            call IMAP('=>', '\Rightarrow', 'tex')
+            call IMAP('<=>', '\Leftrightarrow', 'tex')
+            call IMAP("`'", '\cdot', 'tex')
+            call IMAP('`C', 'C_{<++>}^{<++>}<++>', 'tex')
+            call IMAP('`~', '\sim', 'tex')
+            call IMAP('~=', '\cong', 'tex')
+            call IMAP('`A', '\forall <++> \to <++>', 'tex')
+            call IMAP('`E', '\exists <++> : <++>', 'tex')
+            call IMAP('FBB', '\mathbb{<++>}<++>', 'tex')
+            call IMAP('`_', '\overline{<++>}<++>', 'tex')
+
+            imap i <M-i>
+            nmap i <M-i>
+            imap c <M-c> 
+            nmap c <M-c> 
+            imap l <M-l> 
+            nmap l <M-l> 
+
+            imap O1;2P <S-F1>
+            imap O1;2Q <S-F2>
+            imap O1;2R <S-F3>
+            imap O1;2S <S-F4>
+        endf
+
+        set grepprg=grep\ -nH\ $*
 
         let g:Tex_PromptedEnvironments='multline,$$,align,align*,define*,Th,remark*,exercise,claim,example,lem,proof'
         " let g:Tex_PromptedEnvironments='eqnarray*,eqnarray,equation,equation*,multline,$$,align,align*,define*,Th,remark*,exercise,claim,example,lem,proof'
         let g:Tex_DefaultTargetFormat='pdf'
         let g:Tex_MultipleCompileFormats='dvi,pdf'
-        autocmd Syntax tex call IMAP('=>', '\Rightarrow', 'tex')
-        autocmd Syntax tex call IMAP('<=>', '\Leftrightarrow', 'tex')
-        autocmd Syntax tex call IMAP("`'", '\cdot', 'tex')
-        autocmd Syntax tex call IMAP('`C', 'C_{<++>}^{<++>}<++>', 'tex')
-        autocmd Syntax tex call IMAP('`~', '\sim', 'tex')
-        autocmd Syntax tex call IMAP('~=', '\cong', 'tex')
-        autocmd Syntax tex call IMAP('`A', '\forall <++> \to <++>', 'tex')
-        autocmd Syntax tex call IMAP('`E', '\exists <++> : <++>', 'tex')
-        autocmd Syntax tex call IMAP('FBB', '\mathbb{<++>}<++>', 'tex')
-        autocmd Syntax tex call IMAP('`_', '\overline{<++>}<++>', 'tex')
-
-        imap i <M-i>
-        nmap i <M-i>
-        imap c <M-c> 
-        nmap c <M-c> 
-        imap l <M-l> 
-        nmap l <M-l> 
-
-        imap O1;2P <S-F1>
-        imap O1;2Q <S-F2>
-        imap O1;2R <S-F3>
-        imap O1;2S <S-F4>
+        autocmd Syntax tex call SetupLatexSuite()
     " }}}
 
-    "Syntastic {{{
-        let g:syntastic_enable_signs=1
-        let g:syntastic_c_compiler = 'clang'
-        let g:syntastic_cpp_compiler = 'clang++'
-        let g:syntastic_cpp_compiler_options = ' -std=c++11 '
-    " }}}
 
     "Makefiles {{{
         autocmd FileType make set noexpandtab
     " }}}
 
-    " spellcheck {{{
-        set spell
-        " set spelllang ru_yo
-        " set spelllang en_us
-    " }}}
+augroup END
 " }}}
 
 " nerdcommenter {{{
