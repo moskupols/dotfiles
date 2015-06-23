@@ -85,11 +85,11 @@ local layouts =
 -- }}}
 
 -- {{{ Wallpaper
-if beautiful.wallpaper then
+-- if beautiful.wallpaper then
     for s = 1, screen.count() do
-        gears.wallpaper.maximized(beautiful.wallpaper, s, true)
+        gears.wallpaper.maximized("/home/moskupols/wallpaper.jpg", s, true)
     end
-end
+-- end
 -- }}}
 
 -- {{{ Tags
