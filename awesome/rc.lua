@@ -167,9 +167,9 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
                         awful.button({ }, 1, awful.tag.viewonly),
                         awful.button({ modkey }, 1, awful.client.movetotag),
                         awful.button({ }, 3, awful.tag.viewtoggle),
-                        awful.button({ modkey }, 3, awful.client.toggletag),
-                        awful.button({ }, 4, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end),
-                        awful.button({ }, 5, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end)
+                        awful.button({ modkey }, 3, awful.client.toggletag) --,
+                        -- awful.button({ }, 4, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end),
+                        -- awful.button({ }, 5, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end)
                         ) -- }}}
     mytasklist = {} -- {{{
     mytasklist.buttons = awful.util.table.join(
@@ -253,9 +253,9 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
+    awful.button({ }, 3, function () mymainmenu:toggle() end) --,
+    -- awful.button({ }, 4, awful.tag.viewnext),
+    -- awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
 
