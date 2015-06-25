@@ -127,29 +127,43 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
+-- {{{ kbdMgr
+-- Actually just a wrapper around awesome little xkblayout-state utility:
+-- https://aur.archlinux.org/packages/xkblayout-state/
+    kbdMgr = {}
+
+    kbdMgr.get_layout = function()
+        fd = io.popen("xkblayout-state print %s")
+        content = fd:read("*all")
+        return content
+    end
+
+    kbdMgr.set_layout = function(id_or_delta)
+        os.execute("xkblayout-state set " .. tostring(id_or_delta))
+    end
+-- }}}
+
 -- {{{ Wibox
     -- widgets {{{
         -- keyboard layout widget {{{
             kbdwidget = {}
-            kbdwidget.cmd_prefix = "setxkbmap -layout "
-            kbdwidget.layouts = { { "us,ru", "us" }, { "ru,us", "ru" } }
-            kbdwidget.current = 1  -- us is our default layout
             kbdwidget.widget = wibox.widget.textbox()
-            kbdwidget.widget:set_text(" " .. kbdwidget.layouts[kbdwidget.current][2] .. " ")
-            kbdwidget.switch_text = function ()
-                kbdwidget.current = kbdwidget.current % #(kbdwidget.layouts) + 1
-                kbdwidget.widget:set_text(" " .. kbdwidget.layouts[kbdwidget.current][2] .. " ")
+
+            kbdwidget.update_text = function()
+                kbdwidget.widget:set_text(" " .. kbdMgr.get_layout() .. " ")
             end
+            kbdwidget.update_text()
+
             kbdwidget.switch_layout = function ()
-                kbdwidget.switch_text()
-                os.execute( kbdwidget.cmd_prefix .. " " .. kbdwidget.layouts[kbdwidget.current][1])
+                kbdMgr.set_layout("+1")
+                kbdwidget.update_text()
             end
 
             -- Mouse bindings
             kbdwidget.widget:buttons(
                 awful.util.table.join(
                     awful.button({ }, 1, kbdwidget.switch_layout),
-                    awful.button({ }, 3, kbdwidget.switch_text))
+                    awful.button({ }, 3, kbdwidget.update_text))
             )
         -- }}}
 
@@ -261,7 +275,7 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-    awful.key({ }, "ISO_Next_Group", function () kbdwidget.switch_text() end),
+    awful.key({ }, "ISO_Next_Group", kbdwidget.update_text),
     -- awful.key({ "Control" }, "ISO_Next_Group", function () kbdwidget.switch_text() end),
 
     -- Brightness Control {{{
