@@ -39,7 +39,7 @@ setopt interactivecomments
 plugins=(
     cowgreet contestenv solarized-dircolors fuck # my own
     systemd common-aliases # somewhat customized
-    git archlinux sudo virtualenv pip) # taken as is
+    git archlinux sudo virtualenv pip python) # taken as is
 
 source $ZSH/oh-my-zsh.sh
 
