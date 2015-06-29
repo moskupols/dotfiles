@@ -170,6 +170,8 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
         -- {{{ textclock widget
         clockwidget = awful.widget.textclock()
         -- }}}
+
+        mpdwidget = require("mpd")
     -- }}}
 
     -- Create a wibox for each screen and add it
@@ -250,6 +252,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
         -- Widgets that are aligned to the right
         local right_layout = wibox.layout.fixed.horizontal()
         right_layout:add(mytaglist[s])
+        right_layout:add(mpdwidget.widget)
         right_layout:add(kbdwidget.widget)
         if s == 1 then right_layout:add(wibox.widget.systray()) end
         right_layout:add(clockwidget)
@@ -274,6 +277,7 @@ root.buttons(awful.util.table.join(
 -- }}}
 
 -- {{{ Key bindings
+mpdwidget:append_global_keys()
 globalkeys = awful.util.table.join(
     awful.key({ }, "ISO_Next_Group", kbdwidget.update_text),
     -- awful.key({ "Control" }, "ISO_Next_Group", function () kbdwidget.switch_text() end),
