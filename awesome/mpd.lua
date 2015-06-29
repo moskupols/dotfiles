@@ -9,14 +9,14 @@ musicwidget.font = "Liberation Mono 8" -- Set widget font
 musicwidget.font_color = beautiful.fg_widget --Set widget font color
 musicwidget.background = beautiful.bg_widget --Set widget background color
 musicwidget.scrolling = true -- If true, the text in the widget will be scrolled
-musicwidget.output_size = 30 -- Set the size of widget in symbols
+musicwidget.output_size = 25 -- Set the size of widget in symbols
 musicwidget.update_interval = 10 -- Set the update interval in seconds
 
 -- Set the folder where icons are located (change username to your login name)
--- musicwidget.path_to_icons = "/home/moskupols/.config/awesome/icons"
+musicwidget.path_to_icons = "/home/moskupols/.config/awesome/awesompd/icons"
 
 -- Set the path to the icon to be displayed on the widget itself
--- musicwidget.widget_icon = "/path/to/icon"
+-- musicwidget.widget_icon = "/home/moskupols/.config/awesome/awesompd/icons/play_icon.png"
 
 -- Specify the browser you use so awesompd can open links from
 -- Jamendo in it.
