@@ -48,21 +48,6 @@ musicwidget.servers = {
     -- port = 6600 }
 }
 
--- Set the buttons of the widget. Keyboard keys are working in the
--- entire Awesome environment. Also look at the line 352.
-musicwidget:register_buttons(
-  { { "", awesompd.MOUSE_LEFT, musicwidget:command_playpause() },
-    { "Control", awesompd.MOUSE_SCROLL_UP, musicwidget:command_prev_track() },
-    { "Control", awesompd.MOUSE_SCROLL_DOWN, musicwidget:command_next_track() },
-    { "", awesompd.MOUSE_SCROLL_UP, musicwidget:command_volume_up() },
-    { "", awesompd.MOUSE_SCROLL_DOWN, musicwidget:command_volume_down() },
-    { "", awesompd.MOUSE_RIGHT, musicwidget:command_show_menu() },
-    -- { "", "XF86AudioLowerVolume", musicwidget:command_volume_down() },
-    -- { "", "XF86AudioRaiseVolume", musicwidget:command_volume_up() },
-    -- { "Mod4", "Pause", musicwidget:command_playpause() } 
-})
-
-musicwidget:run() -- After all configuration is done, run the widget
 
 -- END OF AWESOMPD WIDGET DECLARATION
 

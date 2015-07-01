@@ -171,7 +171,26 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
         clockwidget = awful.widget.textclock()
         -- }}}
 
-        mpdwidget = require("mpd")
+        -- mpdwidget {{{
+            local awesompd = require("awesompd/awesompd")
+            mpdwidget = require("mpd")
+            -- Set the buttons of the widget. Keyboard keys are working in the
+            -- entire Awesome environment.
+            mpdwidget:register_buttons(
+              { { "", awesompd.MOUSE_LEFT, mpdwidget:command_playpause() },
+                { "Control", awesompd.MOUSE_LEFT, spawning(terminal .. " -e ncmpcpp")},
+                { "Control", awesompd.MOUSE_SCROLL_UP, mpdwidget:command_prev_track() },
+                { "Control", awesompd.MOUSE_SCROLL_DOWN, mpdwidget:command_next_track() },
+                { "", awesompd.MOUSE_SCROLL_UP, mpdwidget:command_volume_up() },
+                { "", awesompd.MOUSE_SCROLL_DOWN, mpdwidget:command_volume_down() },
+                { "", awesompd.MOUSE_RIGHT, mpdwidget:command_show_menu() },
+                -- { "", "XF86AudioLowerVolume", mpdwidget:command_volume_down() },
+                -- { "", "XF86AudioRaiseVolume", mpdwidget:command_volume_up() },
+                -- { "Mod4", "Pause", mpdwidget:command_playpause() }
+            })
+
+            mpdwidget:run() -- After all configuration is done, run the widget
+        -- }}}
     -- }}}
 
     -- Create a wibox for each screen and add it
@@ -572,3 +591,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Autostart {{{
 spawnsh("run-once nm-applet")
 -- }}}
+
