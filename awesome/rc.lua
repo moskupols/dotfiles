@@ -316,8 +316,9 @@ globalkeys = awful.util.table.join(
     -- }}}
 
     -- {{{ win+smth application launchers
-    awful.key({ modkey,           }, "g",   spawning("google-chrome")       ),
-    awful.key({ modkey,           }, "t",   spawning(terminal)       ),
+    awful.key({ modkey,           }, "c",   spawning(terminal .. " -e ncmpcpp")),
+    awful.key({ modkey,           }, "g",   spawning("google-chrome")),
+    awful.key({ modkey,           }, "t",   spawning(terminal)),
     awful.key({ modkey,           }, "Return", spawning(terminal)),
     -- }}}
 
