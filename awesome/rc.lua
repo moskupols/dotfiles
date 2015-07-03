@@ -42,7 +42,7 @@ end
 beautiful.init("/home/moskupols/.config/awesome/zenburn.theme.lua")
 
 -- This is used later as the default terminal.
-terminal = "xfce4-terminal"
+terminal = "terminator"
 
 -- {{{ spawn
 spawn = awful.util.spawn
