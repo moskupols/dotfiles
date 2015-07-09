@@ -56,6 +56,9 @@ end
 spawnotifying = function (cmd)
     return function () spawnotify(cmd) end
 end
+function termcmd (cmd)
+    return terminal .. " -e \"" .. cmd .. "\""
+end
 -- }}}
 
 -- Default modkey.
@@ -110,7 +113,7 @@ end
 -- {{{ Menu
 -- Create a laucher widget and a main menu
 myawesomemenu = {
-   { "manual", terminal .. " -e man awesome" },
+   { "manual", termcmd("man awesome") },
    { "restart", awesome.restart },
    { "quit", awesome.quit }
 }
@@ -178,7 +181,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
             -- entire Awesome environment.
             mpdwidget:register_buttons(
               { { "", awesompd.MOUSE_LEFT, mpdwidget:command_playpause() },
-                { "Control", awesompd.MOUSE_LEFT, spawning(terminal .. " -e ncmpcpp")},
+                { "Control", awesompd.MOUSE_LEFT, spawning(termcmd("ncmpcpp")) },
                 { "Control", awesompd.MOUSE_SCROLL_UP, mpdwidget:command_prev_track() },
                 { "Control", awesompd.MOUSE_SCROLL_DOWN, mpdwidget:command_next_track() },
                 { "", awesompd.MOUSE_SCROLL_UP, mpdwidget:command_volume_up() },
@@ -316,7 +319,7 @@ globalkeys = awful.util.table.join(
     -- }}}
 
     -- {{{ win+smth application launchers
-    awful.key({ modkey,           }, "c",   spawning(terminal .. " -e ncmpcpp")),
+    awful.key({ modkey,           }, "c",   spawning(termcmd("ncmpcpp"))),
     awful.key({ modkey,           }, "g",   spawning("google-chrome")),
     awful.key({ modkey,           }, "t",   spawning(terminal)),
     awful.key({ modkey,           }, "Return", spawning(terminal)),
