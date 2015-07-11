@@ -142,8 +142,7 @@ let use_0x = 1
 
 " spellcheck {{{
     set spell
-    " set spelllang ru_yo
-    " set spelllang en_us
+    set spelllang=ru_yo,en
 " }}}
 "Syntastic {{{
     let g:syntastic_enable_signs=1
