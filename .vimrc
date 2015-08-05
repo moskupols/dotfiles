@@ -294,9 +294,6 @@ augroup END
     " Running functions {{{
         func! Run()
             wa
-            if filereadable("Makefile")
-                echo "Found Makefile"
-                make! run
             elseif &filetype == "python"
                 !python3 %
             elseif &filetype == "sh" || &filetype == "bash"
