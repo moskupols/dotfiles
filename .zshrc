@@ -37,9 +37,25 @@ setopt interactivecomments
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    cowgreet contestenv solarized-dircolors fuck # my own
-    systemd common-aliases # somewhat customized
-    git archlinux sudo virtualenv pip python) # taken as is
+    # my own
+    cowgreet
+    contestenv
+    solarized-dircolors
+    fuck
+
+    # somewhat customized
+    systemd
+    common-aliases
+
+    # taken as is
+    git
+    svn
+    archlinux
+    sudo
+    virtualenv
+    pip
+    python
+    )
 
 source $ZSH/oh-my-zsh.sh
 
