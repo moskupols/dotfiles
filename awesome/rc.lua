@@ -506,6 +506,8 @@ awful.rules.rules = {
       properties = { tag = tags[1][2] } },
     { rule = { class = "jetbrains-pycharm"},
       properties = { tag = tags[1][3]}},
+    { rule = { class = "jetbrains-studio"},
+      properties = { tag = tags[1][3]}},
     { rule = { class = "Telegram" },
       properties = { tag = tags[1][8] } },
     { rule = { class = "Skype" },
