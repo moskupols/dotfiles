@@ -302,7 +302,12 @@ root.buttons(awful.util.table.join(
 mpdwidget:append_global_keys()
 globalkeys = awful.util.table.join(
     awful.key({ }, "ISO_Next_Group", kbdwidget.update_text),
-    -- awful.key({ "Control" }, "ISO_Next_Group", function () kbdwidget.switch_text() end),
+
+    -- Screenshooter {{{
+    awful.key({ }, "Print", spawning("xfce4-screenshooter")),
+    awful.key({ "Control" }, "Print", spawning("xfce4-screenshooter -r")),
+    awful.key({ "Shift" }, "Print", spawning("xfce4-screenshooter -w")),
+    -- }}}
 
     -- Brightness Control {{{
     awful.key({ }, "XF86MonBrightnessDown", spawnotifying("sudo set-brightness -7%")),
