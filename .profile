@@ -9,8 +9,8 @@ else
     export BROWSER=links
 fi
 
-DOTFILES="$HOME"/repos/dotfiles
-DOTF_BIN=$DOTFILES/bin
+export DOTFILES="$HOME"/repos/dotfiles
+DOTF_BIN="$DOTFILES"/bin
 
 if [[ $UID -ge 1000 && -d $DOTF_BIN && -z $(echo $PATH | grep -o $DOTF_BIN) ]]
 then
