@@ -1,0 +1,51 @@
+#!/usr/bin/python
+
+# slightly enhanced
+# echo $1 >/sys/class/backlight/intel_backlight/brightness
+
+import os
+import sys
+import re
+
+API_DIR = '/sys/class/backlight/intel_backlight/'
+BRIGHTNESS_PATH = os.path.join(API_DIR, 'brightness')
+MAX_BRIGHTNESS_PATH = os.path.join(API_DIR, 'max_brightness')
+
+def read_value(path):
+    with open(path, 'r') as f:
+        return int(f.readline().strip())
+
+def percent_resolved(s, mx):
+    if s[-1] == '%':
+        return round(min(100, int(s[:-1])) / 100 * mx)
+    return min(mx, int(s))
+
+def main():
+    if len(sys.argv) >= 2:
+        desired = sys.argv[1]
+    else:
+        print(read_value(BRIGHTNESS_PATH))
+        return
+
+    assert re.match('^[+-]?\d+%?$', desired)
+
+    max_brightness = read_value(MAX_BRIGHTNESS_PATH)
+
+    if desired[0] in '+-':
+        cur_brightness = read_value(BRIGHTNESS_PATH)
+        delta = percent_resolved(desired[1:], max_brightness)
+        if (desired[0] == '-'):
+            delta = -delta
+        new_value = max(0, min(max_brightness, cur_brightness + delta))
+    else:
+        new_value = percent_resolved(desired, max_brightness)
+
+    print(new_value)
+
+    with open(BRIGHTNESS_PATH, 'w') as f:
+        print(new_value, file=f)
+
+
+if __name__ == '__main__':
+    main()
+

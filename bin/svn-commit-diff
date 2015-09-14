@@ -1,0 +1,6 @@
+#!/usr/bin/sh
+
+echo " " >>$1
+svn diff >>$1
+$EDITOR $1
+
