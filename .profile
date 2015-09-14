@@ -9,7 +9,4 @@ else
     export BROWSER=links
 fi
 
-# For java applications in awesome, see
-# https://awesome.naquadah.org/wiki/FAQ
-AWT_TOOLKIT=MToolkit
 
