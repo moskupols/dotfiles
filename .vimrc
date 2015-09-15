@@ -294,7 +294,7 @@ augroup END
     " Running functions {{{
         func! Run()
             wa
-            elseif &filetype == "python"
+            if &filetype == "python"
                 !python3 %
             elseif &filetype == "sh" || &filetype == "bash"
                 !bash %
@@ -305,7 +305,7 @@ augroup END
             else
                 !./%<
             endif
-        endf  
+        endf
         func! MakeRun()
             wa
             if filereadable("Makefile")
