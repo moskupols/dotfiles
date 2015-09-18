@@ -75,10 +75,10 @@ local layouts =
     awful.layout.suit.floating,          -- 1
     awful.layout.suit.tile.left,         -- 2
     awful.layout.suit.tile,              -- 3
-    -- awful.layout.suit.tile.bottom,
-    -- awful.layout.suit.tile.top,
     awful.layout.suit.fair,              -- 4
     awful.layout.suit.fair.horizontal,   -- 5
+    awful.layout.suit.tile.bottom,       -- 6
+    awful.layout.suit.tile.top,          -- 7
     -- awful.layout.suit.spiral,
     -- awful.layout.suit.spiral.dwindle,
     -- awful.layout.suit.max,
