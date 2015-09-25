@@ -113,8 +113,6 @@ let use_0x = 1
 
     Plugin 'wakatime/vim-wakatime'
 
-    " Plugin 'Syntastic'
-
     Plugin 'tpope/vim-fugitive'
 
     Plugin 'scrooloose/nerdcommenter'
@@ -144,13 +142,6 @@ let use_0x = 1
     set spell
     set spelllang=ru_yo,en
 " }}}
-"Syntastic {{{
-    let g:syntastic_enable_signs=1
-    let g:syntastic_c_compiler = 'clang'
-    let g:syntastic_cpp_compiler = 'clang++'
-    let g:syntastic_cpp_compiler_options = ' -std=c++11 '
-" }}}
-
     " ycm {{{
         let g:ycm_filetype_blacklist = {}
         let g:ycm_filetype_specific_completion_to_disable = {}
