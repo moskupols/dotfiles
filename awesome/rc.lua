@@ -332,9 +332,9 @@ globalkeys = awful.util.table.join(
 
     -- Standard win+smth binds {{{
     -- {{{ tag switching
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
+    -- awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ "Mod1", "Control"  }, "Left",   awful.tag.viewprev       ),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
+    -- awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ "Mod1", "Control"  }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
     -- }}}
