@@ -131,6 +131,7 @@ let use_0x = 1
     Plugin 'Xuyuanp/nerdtree-git-plugin'
 
     Plugin 'tpope/vim-fugitive'
+    Plugin 'quickfixsigns'
 
     Plugin 'scrooloose/nerdcommenter'
 
@@ -150,9 +151,19 @@ let use_0x = 1
     color solarized
     " color focuspoint
 
+    " airline {{{
     let g:airline_theme = 'dark'
     let g:airline_left_sep='›'  " Slightly fancier than '>'
     let g:airline_right_sep='‹'
+    " }}}
+
+    " quickfixsigns {{{
+    let g:quickfixsigns_classes = ['vcsdiff']
+    hi QuickFixSignsDiffChange ctermbg=blue
+    " }}}
+
+    hi clear VertSplit
+    hi link VertSplit SignColumn
 " }}}
 
 " spellcheck {{{
