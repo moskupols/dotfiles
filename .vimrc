@@ -74,6 +74,8 @@ let use_0x = 1
     let mapleader = ','
     let localleader = ';'
 
+    nmap Q :q<CR>
+
     nmap j 5j
     vmap j 5j
     nmap k 5k
