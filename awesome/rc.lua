@@ -9,7 +9,7 @@ local vicious = require("vicious")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
-local naughty = require("naughty")
+naughty = require("naughty")
 local menubar = require("menubar")
 
 -- {{{ Error handling
@@ -51,7 +51,9 @@ spawning = function (cmd)
 end
 spawnsh = awful.util.spawn_with_shell
 spawnotify = function (cmd)
-    spawnsh("notify-send -t 350 \"`" .. cmd .. "`\"")
+    -- spawnsh("notify-send -t 350 \"`" .. cmd .. "`\"")
+    local cmd = "echo 'naughty.notify({ text = \"'$(" .. cmd ..  ")'\", timeout = 0.350 })' | awesome-client"
+    spawnsh(cmd)
 end
 spawnotifying = function (cmd)
     return function () spawnotify(cmd) end
