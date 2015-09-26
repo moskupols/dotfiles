@@ -79,6 +79,18 @@ let use_0x = 1
     nmap k 5k
     vmap k 5k
 
+    nmap = <C-W>=
+    nmap , <C-W><
+    nmap . <C-W>>
+
+    nmap h <C-W>h
+    nmap l <C-W>l
+
+    nmap <leader>h <C-W>h
+    nmap <leader>j <C-W>j
+    nmap <leader>k <C-W>k
+    nmap <leader>l <C-W>l
+
     nnoremap <C-J> :m+<CR>==
     nnoremap <C-K> :m-2<CR>==
    " inoremap <C-J> <Esc>:m+<CR>==gi
