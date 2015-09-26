@@ -36,29 +36,29 @@ let use_0x = 1
     set linespace=0   " No extra spaces between rows 
 
     set wildmenu                    " Show list instead of just completing
-    set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
+    set wildmode=list:longest,full    " Command <Tab> completion, list matches, then longest common part, then all.
     set wildignore=*.o,*~,*.pyc
     let completeopt='menu,menuone'
 
     set list
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
-    set splitright                  " Puts new vsplit windows to the right of the current
+    set splitright                    " Puts new vsplit windows to the right of the current
     " set splitbelow                  " Puts new split windows to the bottom of the current
 
     " backups {{{
         set backup backupdir=~/.vim/backupdir
         if has('persistent_undo')
             set undodir=~/.vim/undodir undofile
-            set undolevels=1000         " Maximum number of changes that can be undone
+            set undolevels=1000            " Maximum number of changes that can be undone
             set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
         endif
     " }}}
 
     " gui-relative {{{
         if has('gui_running')
-          set guioptions-=T           " Remove the toolbar
-          set lines=40                " 40 lines of text instead of 24
+          set guioptions-=T              " Remove the toolbar
+          set lines=40                  " 40 lines of text instead of 24
         else
             if &term == 'xterm' || &term == 'screen'
                 set t_Co=256
@@ -96,7 +96,7 @@ let use_0x = 1
     nnoremap <C-J> :m+<CR>==
     nnoremap <C-K> :m-2<CR>==
    " inoremap <C-J> <Esc>:m+<CR>==gi
-"    inoremap <C-K> <Esc>:m-2<CR>==gi
+"     inoremap <C-K> <Esc>:m-2<CR>==gi
     vnoremap <C-J> :m'>+<CR>gv=gv
     vnoremap <C-K> :m-2<CR>gv=gv
 
@@ -131,7 +131,7 @@ let use_0x = 1
     Plugin 'Xuyuanp/nerdtree-git-plugin'
 
     Plugin 'tpope/vim-fugitive'
-    Plugin 'quickfixsigns'
+    Plugin 'airblade/vim-gitgutter'
 
     Plugin 'scrooloose/nerdcommenter'
 
@@ -149,21 +149,28 @@ let use_0x = 1
 " appearance {{{
     set background=dark
     color solarized
-    " color focuspoint
+
+    hi clear SignColumn
+    hi link SignColumn LineNr
+
+    " gitgutter {{{
+    hi GitGutterChange ctermfg=darkblue ctermbg=0 guifg=#bbbb00
+    hi GitGutterDelete ctermfg=darkred ctermbg=0 guifg=#ff2222
+
+    let g:gitgutter_map_keys = 0
+    let g:gitgutter_realtime = 1
+    let g:updatetime = 750
+
+    nmap <Leader>gg :GitGutterToggle<CR>
+    nmap <Leader>gs <Plug>GitGutterStageHunk
+    nmap <Leader>gr <Plug>GitGutterRevertHunk
+    " }}}
 
     " airline {{{
     let g:airline_theme = 'dark'
     let g:airline_left_sep='›'  " Slightly fancier than '>'
     let g:airline_right_sep='‹'
     " }}}
-
-    " quickfixsigns {{{
-    let g:quickfixsigns_classes = ['vcsdiff']
-    hi QuickFixSignsDiffChange ctermbg=blue
-    " }}}
-
-    hi clear VertSplit
-    hi link VertSplit SignColumn
 " }}}
 
 " spellcheck {{{
