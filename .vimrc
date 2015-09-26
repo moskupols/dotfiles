@@ -85,8 +85,8 @@ let use_0x = 1
     nmap , <C-W><
     nmap . <C-W>>
 
-    nmap h <C-W>h
-    nmap l <C-W>l
+    nmap h <C-W>W
+    nmap l <C-W>w
 
     nmap <leader>h <C-W>h
     nmap <leader>j <C-W>j
