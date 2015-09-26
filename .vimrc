@@ -44,7 +44,7 @@ let use_0x = 1
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
     set splitright                  " Puts new vsplit windows to the right of the current
-    set splitbelow                  " Puts new split windows to the bottom of the current
+    " set splitbelow                  " Puts new split windows to the bottom of the current
 
     " backups {{{
         set backup backupdir=~/.vim/backupdir
@@ -113,6 +113,9 @@ let use_0x = 1
 
     Plugin 'wakatime/vim-wakatime'
 
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'Xuyuanp/nerdtree-git-plugin'
+
     Plugin 'tpope/vim-fugitive'
 
     Plugin 'scrooloose/nerdcommenter'
@@ -154,6 +157,9 @@ let use_0x = 1
         let g:ycm_confirm_extra_conf = 0
     " }}}
 
+" NERDTree {{{
+    map 1 :NERDTreeToggle<CR>
+" }}}
 " fugitive {{{
 nnoremap <Leader>gs :Gstatus<Enter>
 nnoremap <Leader>gp :Gpush<Enter>
