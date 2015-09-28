@@ -41,17 +41,16 @@ plugins=(
     cowgreet
     contestenv
     solarized-dircolors
-    fuck
 
     # somewhat customized
     systemd
     common-aliases
+    thefuck
 
     # taken as is
     git
     svn
     archlinux
-    sudo
     virtualenv
     pip
     python
