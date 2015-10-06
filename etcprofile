@@ -33,3 +33,10 @@ then
     export PATH=$HOME/bin:${PATH}
 fi
 
+# appengine dir
+APPENGINE_DIR = /opt/google-appengine-java/bin
+if [[-d $APPENGINE_DIR && -z $(echo $PATH | grep -o $APPENGINE_DIR) ]]
+then
+    export PATH=$APPENGINE_DIR:${PATH}
+fi
+
