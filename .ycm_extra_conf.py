@@ -9,7 +9,9 @@ import ycm_core
 flags = [
     '-Wall',
     '-Wextra',
-    '-Werror',
+    '-Wno-char-subscripts',
+    '-Wformat=2',
+    '-Wfloat-equal',
     '-Dmoskupols',
 # THIS IS IMPORTANT! Without a "-std=<something>" flag, clang won't know which
 # language to use when compiling headers. So it will guess. Badly. So C++
