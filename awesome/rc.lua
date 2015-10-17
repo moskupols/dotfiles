@@ -509,7 +509,7 @@ awful.rules.rules = {
                      buttons = clientbuttons } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
-    { rule = { class = "Google-chrome" },
+    { rule = { class = "google-chrome" },
       properties = { tag = tags[1][2] } },
     { rule = { class = "jetbrains-pycharm"},
       properties = { tag = tags[1][3]}},
