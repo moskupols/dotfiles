@@ -137,8 +137,8 @@ let use_0x = 1
 
     Plugin 'bling/vim-airline'
     Plugin 'altercation/vim-colors-solarized'
-    Plugin 'chase/focuspoint-vim'
-    Plugin 'Zenburn'
+    " Plugin 'chase/focuspoint-vim'
+    " Plugin 'Zenburn'
 
     Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
 
@@ -170,6 +170,11 @@ let use_0x = 1
     let g:airline_theme = 'dark'
     let g:airline_left_sep='›'  " Slightly fancier than '>'
     let g:airline_right_sep='‹'
+    " }}}
+    
+    " color_coded {{{
+    hi link NotImplemented Error
+    " hi link 
     " }}}
 " }}}
 
