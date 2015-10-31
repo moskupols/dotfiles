@@ -174,7 +174,8 @@ let use_0x = 1
     
     " color_coded {{{
     hi link NotImplemented Error
-    " hi link 
+    " hi clear EnumConstant
+    hi link EnumConstant Constant
     " }}}
 " }}}
 
