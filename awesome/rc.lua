@@ -497,6 +497,9 @@ root.keys(globalkeys)
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
+-- See https://awesome.naquadah.org/doc/api/modules/awful.rules.html
+-- and https://awesome.naquadah.org/doc/api/modules/client.html
+-- use xprop to see properties of a client
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
@@ -511,22 +514,11 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "google-chrome" },
       properties = { tag = tags[1][2] } },
-    { rule = { class = "jetbrains-pycharm"},
+    { rule_any = { class = {"jetbrains-pycharm", "jetbrains-studio", "jetbrains-idea", "QtCreator"} },
+      except_any = { skip_taskbar = {true}, modal = {true} },
       properties = { tag = tags[1][3]}},
-    { rule = { class = "jetbrains-studio"},
-      properties = { tag = tags[1][3]}},
-    { rule = {class = "QtCreator"},
-      properties = {tag = tags[1][3]}},
-    { rule = { class = "Telegram" },
-      properties = { tag = tags[1][8] } },
-    { rule = { class = "Skype" },
-      properties = { tag = tags[1][8] } },
-    { rule = { instance = "crx_nckgahadagoaajjgafhacjanaoiihapd" },
-      properties = { floating = true },
-      callback = function(c)
-          -- Show to titlebar else you may not know who you're talking with.
-          awful.titlebar.add(c, { modkey = modkey })
-      end },
+    { rule_any = { class = {"Telegram", "Skype"}, name = {"Hangouts - feodor.alexeev@gmail.com"} },
+      properties = { tag = tags[1][8], sticky = false } },
   }
 -- }}}
 
