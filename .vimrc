@@ -150,6 +150,11 @@ let use_0x = 1
     set background=dark
     color solarized
 
+    if has("conceal")
+        set conceallevel=0
+        au FileType * setl conceallevel=0
+    endif
+
     hi clear SignColumn
     hi link SignColumn LineNr
 
@@ -217,7 +222,7 @@ augroup ftSpecific
         let g:tex_flavor='latex'
 
         func! SetupLatexSuite()
-            setlocal conceallevel=0 iskeyword+=: sw=2
+            setlocal iskeyword+=: sw=2
             call IMAP('=>', '\Rightarrow', 'tex')
             call IMAP('<=>', '\Leftrightarrow', 'tex')
             call IMAP("`'", '\cdot', 'tex')
