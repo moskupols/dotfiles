@@ -517,7 +517,7 @@ awful.rules.rules = {
     { rule_any = { class = {"jetbrains-pycharm", "jetbrains-studio", "jetbrains-idea", "QtCreator"} },
       except = { type = "dialog" },
       properties = { tag = tags[1][3]}},
-    { rule_any = { class = {"Telegram", "Skype"}, name = {"Hangouts - feodor.alexeev@gmail.com"} },
+    { rule_any = { class = {"Telegram", "Skype"}, name = {"Hangouts - feodor.alexeev@gmail.com", "Google Hangouts"} },
       properties = { tag = tags[1][8], sticky = false } },
   }
 -- }}}
