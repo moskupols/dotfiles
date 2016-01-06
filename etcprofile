@@ -6,6 +6,8 @@ umask 022
 # Set our default path
 PATH="/usr/local/sbin:/usr/local/bin:/usr/bin"
 export PATH
+JAVA_HOME="/usr/lib/jvm/default"
+export JAVA_HOME
 
 # Load profiles from /etc/profile.d
 if test -d /etc/profile.d/; then
