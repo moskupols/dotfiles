@@ -258,7 +258,7 @@ augroup ftSpecific
 
 
     "Makefiles {{{
-        autocmd FileType make set noexpandtab
+        autocmd FileType make setlocal noexpandtab
     " }}}
 
 augroup END
