@@ -32,7 +32,7 @@ mpd_port = 6600
 #
 ## Needed for tag editor and file operations to work.
 ##
-mpd_music_dir = ~/Dropbox/music
+mpd_music_dir = ~/music
 #
 #mpd_crossfade_time = 5
 #
@@ -325,7 +325,7 @@ playlist_display_mode = columns
 ## Note: You can specify third character which will
 ## be used to build 'empty' part of progressbar.
 ##
-progressbar_look = "─░─"
+progressbar_look = "─╫─"
 #
 progressbar_boldness = yes
 #
@@ -335,7 +335,7 @@ progressbar_boldness = yes
 #
 ## Available values: classic, alternative.
 ##
-user_interface = alternative
+user_interface = classic
 #
 #data_fetching_delay = yes
 #
@@ -353,7 +353,7 @@ user_interface = alternative
 #
 #default_tag_editor_pattern = %n - %t
 #
-header_visibility = no
+header_visibility = yes
 #
 #statusbar_visibility = yes
 #
@@ -480,16 +480,16 @@ use_console_editor = yes
 #
 #colors_enabled = yes
 #
-# color1              = "yellow"
-# color2              = "white"
+color1              = "yellow"
+color2              = "white"
 header_window_color = "yellow"
-# # main_window_color   = "white"
+# main_window_color   = "white"
 statusbar_color     = "white"
-progressbar_color   = "yellow"
+progressbar_color   = "red"
 # empty_tag_color     = "blue"
 state_line_color    = "yellow"
 # state_flags_color   = "white"
 # active_column_color = "yellow"
-# main_window_highlight_color    = "yellow"
+main_window_highlight_color    = "yellow"
 alternative_ui_separator_color = "yellow"
 
