@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+iconv -t latin1 | iconv -f cp1251
+

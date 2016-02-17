@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+
+IDS="TALB TIT2 TPE1"
+
+function process_track {
+    track=$1
+    for id in $IDS; do
+        old_value=`mid3v2 "$track" | grep $id | cut -d= -f2`
+        new_value=`1251-to-utf8 <<<"$old_value" 2>/dev/null`
+        if [ $? = 0 ]; then
+            mid3v2 -v --$id "$new_value" "$track"
+        fi
+    done
+}
+
+for track in "$@"; do
+    if [ -f "$track" ]; then
+        process_track "$track"
+    else
+        find "$track" -name '*.mp3' -exec $0 '{}' ';'
+    fi
+done
+
