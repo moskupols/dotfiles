@@ -279,7 +279,7 @@ selected_item_suffix="$9"
 ##   not available.
 ##
 #
-song_columns_list_format = (20)[]{a} (6)[green]{Nr} (40)[white]{t|f:Title} (30)[cyan]{b} (5f)[green]{yr} (6f)[blue]{l}
+song_columns_list_format = (20)[]{a} (6f)[green]{Nr} (40)[white]{t|f:Title} (30)[cyan]{b} (5f)[green]{yr} (6f)[blue]{l}
 #
 ##### various settings #####
 #
