@@ -11,6 +11,7 @@ let use_0x = 1
     set tabstop=4
     set softtabstop=4
     set smarttab
+    set nojoinspaces
 
     set showcmd
     set showmode
@@ -66,7 +67,7 @@ let use_0x = 1
         endif
     " }}}
 
-    set colorcolumn=85
+    set colorcolumn=80,100,120
 
 " }}}
 
