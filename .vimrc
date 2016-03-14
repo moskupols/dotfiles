@@ -144,6 +144,9 @@ let use_0x = 1
     Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
 
     Plugin 'kongo2002/fsharp-vim'
+
+    Plugin 'plasticboy/vim-markdown'
+
     call vundle#end()
 " }}}
 
@@ -260,6 +263,12 @@ augroup ftSpecific
 
     "Makefiles {{{
         autocmd FileType make setlocal noexpandtab
+    " }}}
+
+    " Markdown {{{
+        " For en/em dashes, respectively
+        autocmd FileType markdown imap -- –
+        autocmd FileType markdown imap --- —
     " }}}
 
 augroup END
