@@ -77,11 +77,6 @@ let use_0x = 1
 
     nmap Q :q<CR>
 
-    nmap j 5j
-    vmap j 5j
-    nmap k 5k
-    vmap k 5k
-
     nmap = <C-W>=
     nmap , <C-W><
     nmap . <C-W>>
