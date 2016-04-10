@@ -255,6 +255,9 @@ augroup ftSpecific
         autocmd Syntax tex call SetupLatexSuite()
     " }}}
 
+    " text-like formats {{{
+    autocmd FileType markdown,text,tex setlocal tw=80
+    " }}}
 
     "Makefiles {{{
         autocmd FileType make setlocal noexpandtab
