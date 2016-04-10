@@ -11,7 +11,8 @@ let use_0x = 1
     set tabstop=4
     set softtabstop=4
     set smarttab
-    set nojoinspaces
+
+    set nojoinspaces  " always single space on J, not even after full stop
 
     set showcmd
     set showmode
@@ -25,7 +26,7 @@ let use_0x = 1
     set number
     set ruler " relativenumber
 
-    set concealcursor=inv conceallevel=2
+    set conceallevel=2 concealcursor=
 
     set hlsearch incsearch
     set gdefault " replace with g flag
@@ -37,15 +38,14 @@ let use_0x = 1
     set linespace=0   " No extra spaces between rows 
 
     set wildmenu                    " Show list instead of just completing
-    set wildmode=list:longest,full    " Command <Tab> completion, list matches, then longest common part, then all.
+    set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
     set wildignore=*.o,*~,*.pyc
     let completeopt='menu,menuone'
 
-    set list
-    set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+    set list listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
-    set splitright                    " Puts new vsplit windows to the right of the current
-    " set splitbelow                  " Puts new split windows to the bottom of the current
+    set splitright    " Puts new vsplit windows to the right of the current
+    " set splitbelow  " Puts new split windows below the current
 
     " backups {{{
         set backup backupdir=~/.vim/backupdir
@@ -154,10 +154,10 @@ let use_0x = 1
     set background=dark
     color solarized
 
-    if has("conceal")
-        set conceallevel=0
-        au FileType * setl conceallevel=0
-    endif
+    " if has("conceal")
+        " set conceallevel=0
+        " au FileType * setl conceallevel=0
+    " endif
 
     hi clear SignColumn
     hi link SignColumn LineNr
@@ -180,7 +180,7 @@ let use_0x = 1
     let g:airline_left_sep='›'  " Slightly fancier than '>'
     let g:airline_right_sep='‹'
     " }}}
-    
+
     " color_coded {{{
     hi link NotImplemented Error
     " hi clear EnumConstant
