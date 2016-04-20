@@ -514,7 +514,10 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "google-chrome" },
       properties = { tag = tags[1][2] } },
-    { rule_any = { class = {"jetbrains-pycharm", "jetbrains-studio", "jetbrains-idea", "QtCreator"} },
+    { rule_any = { class = {
+        "jetbrains-pycharm", "jetbrains-studio",
+        "jetbrains-idea", "jetbrains-clion",
+        "QtCreator"} },
       except = { type = "dialog" },
       properties = { tag = tags[1][3]}},
     { rule_any = { class = {"Telegram", "Skype"}, name = {"Hangouts - feodor.alexeev@gmail.com", "Google Hangouts"} },
