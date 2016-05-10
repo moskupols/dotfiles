@@ -8,3 +8,7 @@
 	default = simple
 [core]
 	excludesfile = /home/moskupols/repos/dotfiles/.gitignore
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
