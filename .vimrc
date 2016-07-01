@@ -126,8 +126,6 @@ let use_0x = 1
     filetype plugin indent on
     Plugin 'gmarik/Vundle.vim'
 
-    Plugin 'wakatime/vim-wakatime'
-
     Plugin 'scrooloose/nerdtree'
     Plugin 'Xuyuanp/nerdtree-git-plugin'
 
@@ -138,12 +136,6 @@ let use_0x = 1
 
     Plugin 'bling/vim-airline'
     Plugin 'altercation/vim-colors-solarized'
-    " Plugin 'chase/focuspoint-vim'
-    " Plugin 'Zenburn'
-
-    Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
-
-    Plugin 'kongo2002/fsharp-vim'
 
     Plugin 'plasticboy/vim-markdown'
 
