@@ -97,3 +97,7 @@ activate-venv() {
 	source ~/venvs/$1/bin/activate
 }
 
+if [[ -d ~/.zshrc.local ]] ; then
+    source ~/.zshrc.local
+fi
+
