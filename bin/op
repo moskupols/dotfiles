@@ -1,4 +1,4 @@
 #!/bin/bash
 
-xdg-open >/dev/null &>/dev/null "$@"
+exo-open >/dev/null &>/dev/null "$@"
 
