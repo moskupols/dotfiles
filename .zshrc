@@ -78,15 +78,15 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zshplaces
 
 preexec() {
-	SECONDS=0
+    SECONDS=0
 }
 
 precmd() {
-	local last; last=$history[$[HISTCMD-1]]
-	if ! grep -q vim <<<"$last"; then
-		(( SECONDS > 20 )) &&  # Took more than 2 minutes, send alert
-		notify-send --urgency=low -i ${${?/0/terminal}//<->*/error} $last
-	fi
+    local last; last=$history[$[HISTCMD-1]]
+    if ! grep -q vim <<<"$last"; then
+        (( SECONDS > 20 )) &&  # Took more than 2 minutes, send alert
+        notify-send --urgency=low -i ${${?/0/terminal}//<->*/error} $last
+    fi
 }
 
 new-venv() {
@@ -94,7 +94,7 @@ new-venv() {
 }
 
 activate-venv() {
-	source ~/venvs/$1/bin/activate
+    source ~/venvs/$1/bin/activate
 }
 
 if [[ -d ~/.zshrc.local ]] ; then
