@@ -48,7 +48,7 @@ plugins=(
     # taken as is
     git
     svn
-    archlinux
+    ubuntu
     virtualenv
     pip
     python
@@ -102,4 +102,3 @@ fi
 setopt interactivecomments
 
 unsetopt completealiases
-
