@@ -1,6 +1,12 @@
-#!/usr/bin/sh
+#!/bin/sh
 
-echo " " >>$1
-svn diff >>$1
-$EDITOR $1
+msg="$1"
+if [ ! -r "$msg" ] ; then
+    msg=../"$msg"
+fi
+
+echo " " >>"$msg"
+svn diff | sed 's/^ $//' >>"$msg"
+
+vim -c 'set ft=diff' "$msg"
 
