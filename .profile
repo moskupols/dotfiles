@@ -1,19 +1,27 @@
-# ~/.profile
+# ~/.profile: executed by the command interpreter for login shells.
+# the default umask is set in /etc/profile; for setting the umask
+# for ssh logins, install and configure the libpam-umask package.
+#umask 022
 
-export EDITOR=vim
-export SUDO_EDITOR=vim
+export EDITOR=/usr/bin/vim
+export SUDO_EDITOR=/usr/bin/vim
 
-if [ -n "$DISPLAY" ]; then
-    export BROWSER=google-chrome
-else
-    export BROWSER=links
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+    . "$HOME/.bashrc"
+    fi
 fi
 
-export DOTFILES="$HOME"/repos/dotfiles
-DOTF_BIN="$DOTFILES"/bin
+# Use common bin from dotfiles
+export DOTFILES="$HOME/repos/dotfiles"
+if [ -d "$DOTFILES/bin" ] ; then
+    PATH="$DOTFILES/bin:$PATH"
+fi
 
-if [[ $UID -ge 1000 && -d $DOTF_BIN && -z $(echo $PATH | grep -o $DOTF_BIN) ]]
-then
-    export PATH=$DOTF_BIN:${PATH}
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
 fi
 
