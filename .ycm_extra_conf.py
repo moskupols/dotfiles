@@ -8,7 +8,7 @@ flags = [
     '-Wformat=2',
     '-Wfloat-equal',
     '-Dmoskupols',
-    '-std=gnu++11',
+    '-std=gnu++14',
     '-x',
     '-c++',
 ]
