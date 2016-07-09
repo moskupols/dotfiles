@@ -285,7 +285,7 @@ augroup END
         !gcc -std=c11 -Wall -Wextra -pedantic -O2 -o %< %
     endf
     func! CompileCDebug()
-        !gcc -std=c11 -Wall -Wextra -pedantic -g -o %< %
+        !gcc -std=c11 -Wall -Wextra -pedantic -fsanitize=address -fsanitize=undefined -g -o %< %
     endf
     func! CompileCPP()
         let CXX_FLAGS = "-Dmoskupols -Wno-unused-result -Wall -Wextra -O2"
@@ -307,6 +307,8 @@ augroup END
             call CompileCPP()
         elseif &filetype == "c"
             call CompileC()
+        elseif &filetype == "cs"
+            !mcs %
         else
             echo "Not appropriate file type"
         endif
@@ -327,7 +329,7 @@ augroup END
         elseif &filetype == "c"
             call CompileCDebug()
         else
-            echo "Not appropriate file type"
+            call Compile()
         endif
     endf
     func! MakeDebug()
@@ -352,6 +354,8 @@ augroup END
                 !./`basename \`pwd\``
             elseif &filetype == "haskell"
                 !runhaskell %
+            elseif &filetype == "cs"
+                !./%<.exe
             else
                 !./%<
             endif
