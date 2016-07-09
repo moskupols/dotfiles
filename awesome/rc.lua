@@ -92,7 +92,7 @@ local layouts =
 -- {{{ Wallpaper
 -- if beautiful.wallpaper then
     for s = 1, screen.count() do
-        gears.wallpaper.maximized("/home/moskupols/wallpaper.jpg", s, true)
+        gears.wallpaper.maximized("/home/moskupols/wallpaper", s, true)
     end
 -- end
 -- }}}
@@ -329,6 +329,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "c",   spawning(termcmd("ncmpcpp"))),
     awful.key({ modkey,           }, "g",   spawning("google-chrome")),
     awful.key({ modkey,           }, "t",   spawning(terminal)),
+    awful.key({ modkey, "Mod1"    }, "j",   spawning(termcmd("jupyter notebook ~/Dropbox/notebooks"))),
     awful.key({ modkey,           }, "Return", spawning(terminal)),
     -- }}}
 
