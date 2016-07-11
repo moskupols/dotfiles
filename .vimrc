@@ -139,6 +139,8 @@ let use_0x = 1
 
     Plugin 'plasticboy/vim-markdown'
 
+    Plugin 'SWIG-syntax'
+
     call vundle#end()
 " }}}
 
