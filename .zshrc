@@ -83,7 +83,7 @@ precmd() {
     local last; last=$history[$[HISTCMD-1]]
     if which notify-send >/dev/null && ! grep -q vim <<<"$last"; then
         (( SECONDS > 20 )) &&  # Took more than 2 minutes, send alert
-        notify-send --urgency=low -i ${${?/0/terminal}//<->*/error} $last
+        notify-send -t 3 --urgency=low -i ${${?/0/terminal}//<->*/error} $last
     fi
 }
 
