@@ -1,0 +1,4 @@
+#!/bin/bash
+
+setup-keyboard
+/usr/bin/xflock4 $@
