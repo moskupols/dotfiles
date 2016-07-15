@@ -27,8 +27,6 @@ ENABLE_CORRECTION="true"
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-setopt interactivecomments
-
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
@@ -100,4 +98,8 @@ activate-venv() {
 if [[ -r ~/.zshrc.local ]] ; then
     source ~/.zshrc.local
 fi
+
+setopt interactivecomments
+
+unsetopt completealiases
 
