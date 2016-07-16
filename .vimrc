@@ -129,6 +129,8 @@ let use_0x = 1
     Plugin 'tpope/vim-fugitive'
     Plugin 'airblade/vim-gitgutter'
 
+    Plugin 'rhysd/vim-clang-format'
+
     Plugin 'scrooloose/nerdcommenter'
 
     Plugin 'bling/vim-airline'
@@ -255,8 +257,13 @@ augroup ftSpecific
         autocmd Syntax tex call SetupLatexSuite()
     " }}}
 
+    " c/cpp {{{
+        let clang_format#detect_style_file = 1
+        autocmd FileType cpp let clang_format#auto_formatexpr = 1
+    " }}}
+
     " text-like formats {{{
-    autocmd FileType markdown,text,tex setlocal tw=80
+        autocmd FileType markdown,text,tex setlocal tw=80
     " }}}
 
     "Makefiles {{{
