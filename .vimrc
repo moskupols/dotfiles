@@ -132,6 +132,8 @@ let use_0x = 1
     Plugin 'tpope/vim-fugitive'
     Plugin 'airblade/vim-gitgutter'
 
+    Plugin 'wakatime/wakatime'
+
     Plugin 'scrooloose/nerdcommenter'
 
     Plugin 'bling/vim-airline'
