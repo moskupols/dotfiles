@@ -42,7 +42,7 @@ end
 beautiful.init("/home/moskupols/.config/awesome/zenburn.theme.lua")
 
 -- This is used later as the default terminal.
-terminal = "terminator"
+terminal = "terminator -p smallscreen"
 
 -- {{{ spawn
 spawn = awful.util.spawn
