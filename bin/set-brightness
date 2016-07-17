@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 # slightly enhanced
 # echo $1 >/sys/class/backlight/intel_backlight/brightness
@@ -40,7 +40,7 @@ def main():
     else:
         new_value = percent_resolved(desired, max_brightness)
 
-    print(new_value)
+    print('{}, {}%'.format(new_value, round(new_value / max_brightness * 100)))
 
     with open(BRIGHTNESS_PATH, 'w') as f:
         print(new_value, file=f)

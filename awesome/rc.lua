@@ -312,8 +312,8 @@ globalkeys = awful.util.table.join(
     -- }}}
 
     -- Brightness Control {{{
-    awful.key({ }, "XF86MonBrightnessDown", spawnotifying("sudo set-brightness -7%")),
-    awful.key({ }, "XF86MonBrightnessUp", spawnotifying("sudo set-brightness +7%")),
+    awful.key({ }, "XF86MonBrightnessDown", spawnotifying("sudo `which set-brightness` -7%")),
+    awful.key({ }, "XF86MonBrightnessUp", spawnotifying("sudo `which set-brightness` +7%")),
     -- }}}
 
     -- Volume Control {{{
