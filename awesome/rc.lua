@@ -518,7 +518,7 @@ awful.rules.rules = {
     { rule_any = { class = {"jetbrains-pycharm", "jetbrains-studio", "jetbrains-idea", "QtCreator"} },
       except = { type = "dialog" },
       properties = { tag = tags[1][3]}},
-    { rule_any = { class = {"Telegram", "Skype"}, name = {"Hangouts - feodor.alexeev@gmail.com", "Google Hangouts"} },
+    { rule_any = { class = {"Pidgin", "Telegram", "Skype"}, name = {"Hangouts - feodor.alexeev@gmail.com", "Google Hangouts"} },
       properties = { tag = tags[1][8], sticky = false } },
   }
 -- }}}
@@ -597,6 +597,9 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Autostart {{{
-spawnsh("run-once nm-applet")
+spawn("run-once nm-applet")
+spawn("setup-keyboard")
+spawn("run-once Telegram")
+spawn("run-once pidgin")
 -- }}}
 
