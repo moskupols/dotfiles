@@ -278,7 +278,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
         local right_layout = wibox.layout.fixed.horizontal()
         right_layout:add(mytaglist[s])
         right_layout:add(mpdwidget.widget)
-        right_layout:add(kbdwidget.widget)
+        -- right_layout:add(kbdwidget.widget)
         if s == 1 then right_layout:add(wibox.widget.systray()) end
         right_layout:add(clockwidget)
         right_layout:add(mylayoutbox[s])
@@ -304,7 +304,7 @@ root.buttons(awful.util.table.join(
 -- {{{ Key bindings
 mpdwidget:append_global_keys()
 globalkeys = awful.util.table.join(
-    awful.key({ }, "ISO_Next_Group", kbdwidget.update_text),
+    -- awful.key({ }, "ISO_Next_Group", kbdwidget.update_text),
 
     -- Screenshooter {{{
     awful.key({ }, "Print", spawning("xfce4-screenshooter")),
