@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
 #
 ## Borrowed from
 ## https://github.com/blueyed/dotfiles/blob/master/usr/bin/colors-table

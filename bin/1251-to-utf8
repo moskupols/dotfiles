@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 iconv -t latin1 | iconv -f cp1251
 

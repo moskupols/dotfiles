@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 # Run program unless it's already running.
 # http://awesome.naquadah.org/wiki/Autostart
