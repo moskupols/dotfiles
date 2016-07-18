@@ -138,8 +138,9 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
     kbdMgr = {}
 
     kbdMgr.get_layout = function()
-        fd = io.popen("xkblayout-state print %s")
+        fd = io.popen("xkblayout-state print %e")
         content = fd:read("*all")
+        fd:close()
         return content
     end
 
