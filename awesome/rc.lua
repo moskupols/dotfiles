@@ -197,6 +197,27 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
             mpdwidget:run() -- After all configuration is done, run the widget
         -- }}}
+        
+        -- assault battery indicator {{{
+            local assault = require("assault/awesomewm/assault")
+            myassault = assault({
+                battery = "BAT0", -- battery ID to get data from
+                adapter = "AC", -- ID of the AC adapter to get data from
+                width = 24, -- width of battery
+                height = 10, -- height of battery
+                bolt_width = 16, -- width of charging bolt
+                bolt_height = 8, -- height of charging bolt
+                stroke_width = 2, -- width of battery border
+                peg_top = (calculated), -- distance from the top of the battery to the start of the peg
+                peg_height = (10 / 3), -- height of the peg
+                peg_width = 2, -- width of the peg
+                font = beautiful.font, -- font to use
+                critical_level = 0.10, -- battery percentage to mark as critical (between 0 and 1, default is 10%)
+                normal_color = beautiful.fg_normal, -- color to draw the battery when it's discharging
+                critical_color = beautiful.fg_critical, -- color to draw the battery when it's at critical level
+                charging_color = "#77ff77" -- color to draw the battery when it's charging
+            })
+        -- }}}
     -- }}}
 
     -- Create a wibox for each screen and add it
@@ -279,6 +300,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
         right_layout:add(mytaglist[s])
         right_layout:add(mpdwidget.widget)
         -- right_layout:add(kbdwidget.widget)
+        right_layout:add(myassault)
         if s == 1 then right_layout:add(wibox.widget.systray()) end
         right_layout:add(clockwidget)
         right_layout:add(mylayoutbox[s])
