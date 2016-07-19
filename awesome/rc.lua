@@ -76,11 +76,11 @@ local layouts =
 {
     awful.layout.suit.floating,          -- 1
     awful.layout.suit.tile.left,         -- 2
-    awful.layout.suit.tile,              -- 3
+    awful.layout.suit.tile.right,        -- 3
     awful.layout.suit.fair,              -- 4
     awful.layout.suit.fair.horizontal,   -- 5
-    awful.layout.suit.tile.bottom,       -- 6
-    awful.layout.suit.tile.top,          -- 7
+    -- awful.layout.suit.tile.bottom,       -- 6
+    -- awful.layout.suit.tile.top,          -- 7
     -- awful.layout.suit.spiral,
     -- awful.layout.suit.spiral.dwindle,
     -- awful.layout.suit.max,
@@ -103,11 +103,11 @@ tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
     tags[s] = awful.tag(
-        { 1, 2, 3, 4, 5, "Q", "W", "E"}, 
+        { 1, 2, 3, 4, 5, "Q", "W", "E"},
         s,
-        { layouts[2], layouts[2], layouts[1],
-          layouts[1], layouts[1], layouts[2],
-          layouts[1], layouts[2]}
+        { layouts[4], layouts[3], layouts[1],
+          layouts[1], layouts[1], layouts[1],
+          layouts[1], layouts[4]}
     )
 end
 -- }}}
