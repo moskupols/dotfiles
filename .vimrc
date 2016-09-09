@@ -221,6 +221,8 @@ nnoremap <Leader>ga :Gwrite<Enter>
 augroup ftSpecific
     autocmd!
 
+    au BufEnter *.{i,swg} setlocal ft=swig
+
     " commit message {{{
         au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
         au FileType gitcommit setlocal completefunc=emoji#complete
