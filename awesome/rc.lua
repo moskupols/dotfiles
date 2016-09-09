@@ -42,12 +42,28 @@ end
 beautiful.init("/home/moskupols/.config/awesome/zenburn.theme.lua")
 
 -- This is used later as the default terminal.
-terminal = "terminator -p smallscreen"
+terminal = "terminator"
+
+screen_cfg = { {
+        ["terminal"] = terminal .. " -p smallscreen",
+    }, {
+        ["terminal"] = terminal .. " -p bigscreen",
+    }
+}
+screen.primary = screen.count()
+screen_cfg[screen.count()].systray = 1
+
+function terminal_on_current_screen ()
+    return screen_cfg[mouse.screen].terminal
+end
 
 -- {{{ spawn
 spawn = awful.util.spawn
 spawning = function (cmd)
     return function () spawn(cmd) end
+end
+function spawning_fun (cmd_fun)
+    return function () spawn(cmd_fun()) end
 end
 spawnsh = awful.util.spawn_with_shell
 spawnotify = function (cmd)
@@ -59,7 +75,7 @@ spawnotifying = function (cmd)
     return function () spawnotify(cmd) end
 end
 function termcmd (cmd)
-    return terminal .. " -e \"" .. cmd .. "\""
+    return terminal_on_current_screen() .. " -e \"" .. cmd .. "\""
 end
 -- }}}
 
@@ -197,7 +213,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
             mpdwidget:run() -- After all configuration is done, run the widget
         -- }}}
-        
+
         -- assault battery indicator {{{
             local assault = require("assault/awesomewm/assault")
             myassault = assault({
@@ -301,7 +317,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
         right_layout:add(mpdwidget.widget)
         -- right_layout:add(kbdwidget.widget)
         right_layout:add(myassault)
-        if s == 1 then right_layout:add(wibox.widget.systray()) end
+        if screen_cfg[s].systray then right_layout:add(wibox.widget.systray()) end
         right_layout:add(clockwidget)
         right_layout:add(mylayoutbox[s])
 
@@ -351,8 +367,8 @@ globalkeys = awful.util.table.join(
     -- {{{ win+smth application launchers
     awful.key({ modkey,           }, "c",   spawning(termcmd("ncmpcpp"))),
     awful.key({ modkey,           }, "g",   spawning("exo-open --launch WebBrowser")),
-    awful.key({ modkey,           }, "t",   spawning(terminal)),
-    awful.key({ modkey,           }, "Return", spawning(terminal)),
+    awful.key({ modkey,           }, "t",   spawning_fun(terminal_on_current_screen)),
+    awful.key({ modkey,           }, "Return", spawning_fun(terminal_on_current_screen)),
     -- }}}
 
     -- Standard win+smth binds {{{
