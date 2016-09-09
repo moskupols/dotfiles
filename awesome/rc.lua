@@ -229,9 +229,9 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
                 peg_width = 2, -- width of the peg
                 font = beautiful.font, -- font to use
                 critical_level = 0.10, -- battery percentage to mark as critical (between 0 and 1, default is 10%)
-                normal_color = beautiful.fg_normal, -- color to draw the battery when it's discharging
-                critical_color = beautiful.fg_critical, -- color to draw the battery when it's at critical level
-                charging_color = "#77ff77" -- color to draw the battery when it's charging
+                normal_color = beautiful.fg_widget, -- color to draw the battery when it's discharging
+                critical_color = beautiful.fg_end_widget, -- color to draw the battery when it's at critical level
+                charging_color = beautiful.fg_urgent -- color to draw the battery when it's charging
             })
         -- }}}
     -- }}}
