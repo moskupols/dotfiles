@@ -144,6 +144,8 @@ let use_0x = 1
 
     Plugin 'SWIG-syntax'
 
+    Plugin 'gerw/vim-latex-suite'
+
     call vundle#end()
 " }}}
 
