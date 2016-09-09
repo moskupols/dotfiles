@@ -3,7 +3,7 @@ REALSVN=/usr/bin/svn
 
 ARGS="$@"
 
-if [ "$1" = "commit" -o "$1" = "ci" ] && [ "$2" != "-m" ]; then
+if [ "$1" = "commit" ]; then
     $REALSVN $ARGS --editor-cmd="svn-commit-diff"
 else
     $REALSVN $ARGS

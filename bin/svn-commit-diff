@@ -8,5 +8,4 @@ fi
 echo " " >>"$msg"
 svn diff | sed 's/^ $//' >>"$msg"
 
-vim -c 'set ft=diff' "$msg"
-
+exec vim -c 'set ft=diff' "$msg"
