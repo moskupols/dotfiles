@@ -639,5 +639,6 @@ spawn("run-once nm-applet")
 spawn("setup-keyboard")
 spawn("run-once Telegram")
 spawn("run-once pidgin")
+spawn("run-once dropbox start")
 -- }}}
 
