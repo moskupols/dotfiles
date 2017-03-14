@@ -6,6 +6,10 @@ htmlcov/
 .*.swp
 svn-commit*.tmp
 
+*.a
+*.o
+test-results
+
 
 # Autotools
 
