@@ -45,7 +45,7 @@ beautiful.init("/home/moskupols/.config/awesome/zenburn.theme.lua")
 terminal = "terminator"
 
 screen_cfg = { {
-        ["terminal"] = terminal .. " -p smallscreen",
+        ["terminal"] = terminal .. " -p default",
     }, {
         ["terminal"] = terminal .. " -p bigscreen",
     }
@@ -108,7 +108,7 @@ local layouts =
 -- {{{ Wallpaper
 -- if beautiful.wallpaper then
     for s = 1, screen.count() do
-        gears.wallpaper.maximized("/home/moskupols/wallpaper.jpg", s, true)
+        gears.wallpaper.maximized("/home/moskupols/wallpaper.png", s, true)
     end
 -- end
 -- }}}

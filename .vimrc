@@ -35,7 +35,7 @@ let use_0x = 1
 
     set tabpagemax=20
 
-    set linespace=0   " No extra spaces between rows 
+    set linespace=2   " No extra spaces between rows 
 
     set wildmenu                    " Show list instead of just completing
     set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
@@ -76,11 +76,6 @@ let use_0x = 1
     let localleader = ';'
 
     nmap Q :q<CR>
-
-    nmap j 5j
-    vmap j 5j
-    nmap k 5k
-    vmap k 5k
 
     nmap = <C-W>=
     nmap , <C-W><
@@ -150,7 +145,7 @@ let use_0x = 1
 " }}}
 
 " appearance {{{
-    set background=dark
+    set background=light
     color solarized
 
     " if has("conceal")
@@ -169,9 +164,10 @@ let use_0x = 1
     let g:gitgutter_realtime = 1
     let g:updatetime = 750
 
-    nmap <Leader>gg :GitGutterToggle<CR>
-    nmap <Leader>gs <Plug>GitGutterStageHunk
-    nmap <Leader>gr <Plug>GitGutterRevertHunk
+    nnoremap <Leader>gg <Plug>GitGutterToggle
+    nnoremap <Leader>gst <Plug>Gstatus
+    nnoremap <buffer> <silent> <Leader>gs <Plug>GitGutterStageHunk
+    nnoremap <Leader>gr <Plug>GitGutterRevertHunk
     " }}}
 
     " airline {{{
@@ -269,12 +265,6 @@ augroup ftSpecific
 
     "Makefiles {{{
         autocmd FileType make setlocal noexpandtab
-    " }}}
-
-    " Markdown {{{
-        " For en/em dashes, respectively
-        autocmd FileType markdown imap -- –
-        autocmd FileType markdown imap --- —
     " }}}
 
 augroup END
