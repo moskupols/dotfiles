@@ -50,11 +50,11 @@ screen_cfg = { {
         ["terminal"] = terminal .. " -p bigscreen",
     }
 }
-screen.primary = screen.count()
-screen_cfg[screen.count()].systray = 1
+screen.primary = 1
+screen_cfg[1].systray = 1
 
 function terminal_on_current_screen ()
-    return screen_cfg[mouse.screen].terminal
+    return screen_cfg[mouse.screen.index].terminal
 end
 
 -- {{{ spawn
@@ -211,7 +211,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
                 -- { "Mod4", "Pause", mpdwidget:command_playpause() }
             })
 
-            mpdwidget:run() -- After all configuration is done, run the widget
+            -- mpdwidget:run() -- After all configuration is done, run the widget
         -- }}}
 
         -- assault battery indicator {{{
@@ -314,10 +314,12 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
         -- Widgets that are aligned to the right
         local right_layout = wibox.layout.fixed.horizontal()
         right_layout:add(mytaglist[s])
-        right_layout:add(mpdwidget.widget)
+        -- right_layout:add(mpdwidget.widget)
         -- right_layout:add(kbdwidget.widget)
         right_layout:add(myassault)
-        if screen_cfg[s].systray then right_layout:add(wibox.widget.systray()) end
+        -- if screen_cfg[s].systray then
+            right_layout:add(wibox.widget.systray())
+        -- end
         right_layout:add(clockwidget)
         right_layout:add(mylayoutbox[s])
 
@@ -361,7 +363,7 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioLowerVolume",
         spawnotifying("amixer sset Master 2%- | grep -oP '\\d+%|\\boff'")),
     awful.key({ }, "XF86AudioMute",
-        spawnotifying("amixer set Master toggle | grep -oP '\\bon|\\boff'")),
+        spawnotifying("amixer -D pulse set Master toggle | grep -oP '\\bon|\\boff'")),
     -- }}}
 
     -- {{{ win+smth application launchers
@@ -433,12 +435,12 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "Escape", awesome.quit),
 
     -- Prompt {{{
-    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen.index]:run() end),
 
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run({ prompt = "Run Lua code: " },
-                  mypromptbox[mouse.screen].widget,
+                  mypromptbox[mouse.screen.index].widget,
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
               end),
@@ -478,7 +480,7 @@ register_tag = function (id, keycode)
         -- View tag only.
         awful.key({ modkey }, "#" .. keycode,
                   function ()
-                        local screen = mouse.screen
+                        local screen = mouse.screen.index
                         local tag = awful.tag.gettags(screen)[id]
                         if tag then
                            awful.tag.viewonly(tag)
@@ -487,7 +489,7 @@ register_tag = function (id, keycode)
         -- Toggle tag.
         awful.key({ modkey, "Control" }, "#" .. keycode,
                   function ()
-                      local screen = mouse.screen
+                      local screen = mouse.screen.index
                       local tag = awful.tag.gettags(screen)[id]
                       if tag then
                          awful.tag.viewtoggle(tag)

@@ -126,7 +126,7 @@ let use_0x = 1
     Plugin 'tpope/vim-fugitive'
     Plugin 'airblade/vim-gitgutter'
 
-    Plugin 'wakatime/wakatime'
+    Plugin 'wakatime/vim-wakatime'
 
     Plugin 'scrooloose/nerdcommenter'
 
@@ -140,6 +140,8 @@ let use_0x = 1
     Plugin 'SWIG-syntax'
 
     Plugin 'gerw/vim-latex-suite'
+
+    Plugin 'mbbill/undotree'
 
     call vundle#end()
 " }}}
@@ -168,6 +170,8 @@ let use_0x = 1
     nnoremap <Leader>gst <Plug>Gstatus
     nnoremap <buffer> <silent> <Leader>gs <Plug>GitGutterStageHunk
     nnoremap <Leader>gr <Plug>GitGutterRevertHunk
+
+    au BufEnter * :syntax sync minlines=300
     " }}}
 
     " airline {{{
