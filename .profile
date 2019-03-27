@@ -1,18 +1,8 @@
-# ~/.profile: executed by the command interpreter for login shells.
-# the default umask is set in /etc/profile; for setting the umask
-# for ssh logins, install and configure the libpam-umask package.
-#umask 022
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
-export EDITOR=/usr/bin/vim
-export SUDO_EDITOR=/usr/bin/vim
-
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-    . "$HOME/.bashrc"
-    fi
-fi
+export EDITOR=/usr/bin/nvim
+export SUDO_EDITOR="$EDITOR"
 
 # Use common bin from dotfiles
 export DOTFILES="$HOME/repos/dotfiles"
@@ -24,4 +14,3 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
-
