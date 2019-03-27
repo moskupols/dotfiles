@@ -1,9 +1,0 @@
-[submodule "awesome/awesompd"]
-	path = awesome/awesompd
-	url = https://github.com/alexander-yakushev/awesompd.git
-[submodule "awesome/assault"]
-	path = awesome/assault
-	url = git@github.com:NuckChorris/assault.git
-[submodule "gdb-dashboard"]
-	path = gdb-dashboard
-	url = git@github.com:cyrus-and/gdb-dashboard.git
