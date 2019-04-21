@@ -8,3 +8,4 @@
 	default = simple
 [core]
 	excludesfile = /home/moskupols/repos/dotfiles/.gitignore
+	editor = vim
