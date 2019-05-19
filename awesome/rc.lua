@@ -248,7 +248,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "g", spawning("yandex-browser-beta")),
     awful.key({ modkey,           }, "Return", spawning(terminal)),
     awful.key({ modkey,           }, "d", spawning("xfce4-popup-whiskermenu")),
-    awful.key({ modkey, "Mod1"    }, "l", spawning("xflock4")),
+    awful.key({ modkey, "Mod1"    }, "l", spawning("light-locker-command --lock")),
     -- }}}
 
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
