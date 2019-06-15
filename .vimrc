@@ -5,9 +5,9 @@
     set autoindent
     set smartindent
     set expandtab
-    set shiftwidth=4
-    set tabstop=4
-    set softtabstop=4
+    set shiftwidth=2
+    set tabstop=2
+    set softtabstop=2
     set smarttab
 
     set nojoinspaces  " always single space on J, not even after full stop
