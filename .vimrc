@@ -1,5 +1,3 @@
-let use_0x = 1
-
 " General options {{{
     set nocompatible
     syntax on
@@ -89,19 +87,9 @@ let use_0x = 1
     nmap <leader>k <C-W>k
     nmap <leader>l <C-W>l
 
-    nnoremap <C-J> :m+<CR>==
-    nnoremap <C-K> :m-2<CR>==
-   " inoremap <C-J> <Esc>:m+<CR>==gi
-"     inoremap <C-K> <Esc>:m-2<CR>==gi
-    vnoremap <C-J> :m'>+<CR>gv=gv
-    vnoremap <C-K> :m-2<CR>gv=gv
-
     " Visual shifting (does not exit Visual mode)
     vnoremap < <gv
     vnoremap > >gv
-
-    " For when you forget to sudo.. Really Write the file.
-    cmap w!! w !sudo tee % >/dev/null
 
     nnoremap <silent> <C-l> :noh<return><C-l>
 " }}}
@@ -120,9 +108,6 @@ let use_0x = 1
     filetype plugin indent on
     Plugin 'gmarik/Vundle.vim'
 
-    Plugin 'scrooloose/nerdtree'
-    Plugin 'Xuyuanp/nerdtree-git-plugin'
-
     Plugin 'tpope/vim-fugitive'
     Plugin 'airblade/vim-gitgutter'
 
@@ -132,10 +117,6 @@ let use_0x = 1
 
     Plugin 'bling/vim-airline'
     Plugin 'altercation/vim-colors-solarized'
-
-    Plugin 'junegunn/vim-emoji'
-
-    Plugin 'plasticboy/vim-markdown'
 
     Plugin 'SWIG-syntax'
 
@@ -179,12 +160,6 @@ let use_0x = 1
     let g:airline_left_sep='›'  " Slightly fancier than '>'
     let g:airline_right_sep='‹'
     " }}}
-
-    " color_coded {{{
-    hi link NotImplemented Error
-    " hi clear EnumConstant
-    hi link EnumConstant Constant
-    " }}}
 " }}}
 
 " spellcheck {{{
@@ -203,9 +178,6 @@ let use_0x = 1
         let g:ycm_confirm_extra_conf = 0
     " }}}
 
-" NERDTree {{{
-    map 1 :NERDTreeToggle<CR>
-" }}}
 " fugitive {{{
 nnoremap <Leader>gs :Gstatus<Enter>
 nnoremap <Leader>gp :Gpush<Enter>
@@ -221,52 +193,6 @@ nnoremap <Leader>ga :Gwrite<Enter>
 augroup ftSpecific
     autocmd!
 
-    au BufEnter *.{i,swg} setlocal ft=swig
-
-    " commit message {{{
-        au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-        au FileType gitcommit setlocal completefunc=emoji#complete
-    " }}}
-
-    " latex {{{
-        let g:tex_flavor='latex'
-
-        func! SetupLatexSuite()
-            setlocal iskeyword+=: sw=2
-            call IMAP('=>', '\Rightarrow', 'tex')
-            call IMAP('<=>', '\Leftrightarrow', 'tex')
-            call IMAP("`'", '\cdot', 'tex')
-            call IMAP('`C', 'C_{<++>}^{<++>}<++>', 'tex')
-            call IMAP('`~', '\sim', 'tex')
-            call IMAP('~=', '\cong', 'tex')
-            call IMAP('`A', '\forall <++> \to <++>', 'tex')
-            call IMAP('`E', '\exists <++> : <++>', 'tex')
-            call IMAP('FBB', '\mathbb{<++>}<++>', 'tex')
-            call IMAP('`_', '\overline{<++>}<++>', 'tex')
-
-            imap i <M-i>
-            nmap i <M-i>
-            imap c <M-c> 
-            nmap c <M-c> 
-            imap l <M-l> 
-            nmap l <M-l> 
-
-            imap O1;2P <S-F1>
-            imap O1;2Q <S-F2>
-            imap O1;2R <S-F3>
-            imap O1;2S <S-F4>
-        endf
-
-        set grepprg=grep\ -nH\ $*
-
-        let g:Tex_PromptedEnvironments='multline,$$,align,align*,define*,Th,remark*,exercise,claim,example,lem,proof'
-        " let g:Tex_PromptedEnvironments='eqnarray*,eqnarray,equation,equation*,multline,$$,align,align*,define*,Th,remark*,exercise,claim,example,lem,proof'
-        let g:Tex_DefaultTargetFormat='pdf'
-        let g:Tex_MultipleCompileFormats='dvi,pdf'
-        autocmd Syntax tex call SetupLatexSuite()
-    " }}}
-
-
     "Makefiles {{{
         autocmd FileType make setlocal noexpandtab
     " }}}
@@ -280,159 +206,7 @@ augroup END
     vmap <Leader>/ <Leader>c<space>
 " }}}
 
-" Compilation functions {{{
-    func! CompileC()
-        !gcc -std=c11 -Wall -Wextra -pedantic -O2 -o %< %
-    endf
-    func! CompileCDebug()
-        !gcc -std=c11 -Wall -Wextra -pedantic -fsanitize=address -fsanitize=undefined -g -o %< %
-    endf
-    func! CompileCPP()
-        let CXX_FLAGS = "-Dmoskupols -Wno-unused-result -Wall -Wextra -O2"
-        if g:use_0x == "1"
-            let CXX_FLAGS .= " -std=gnu++0x"
-        endif
-        exec "!g++ " . CXX_FLAGS . " -o %< %"
-    endf
-    func! CompileCPPDebug()
-        let CXX_FLAGS = "-Dmoskupols -Wno-unused-result -Wall -Wextra -g"
-        if g:use_0x == "1"
-            let CXX_FLAGS .= " -std=gnu++0x"
-        endif
-        exec "!g++ " . CXX_FLAGS . " -o %< %"
-    endf
-    func! Compile()
-        wa
-        if &filetype == "cpp"
-            call CompileCPP()
-        elseif &filetype == "c"
-            call CompileC()
-        elseif &filetype == "cs"
-            !mcs %
-        else
-            echo "Not appropriate file type"
-        endif
-    endf
-    func! MakeRelease()
-        wa
-        if filereadable("Makefile")
-            echo "Found Makefile, running make release..."
-            make! release
-        else
-            call Compile()
-        endif
-    endf
-    func! CompileDebug()
-        wa
-        if &filetype == "cpp"
-            call CompileCPPDebug()
-        elseif &filetype == "c"
-            call CompileCDebug()
-        else
-            call Compile()
-        endif
-    endf
-    func! MakeDebug()
-        wa
-        if filereadable("Makefile")
-            echo "Found Makefile, running make..."
-            make! debug
-        else
-            call CompileDebug()
-        endif
-    endf
-    " }}}
-
-    " Running functions {{{
-        func! Run()
-            wa
-            if &filetype == "python"
-                !python3 %
-            elseif &filetype == "sh" || &filetype == "bash"
-                !bash %
-            elseif &filetype == "text"
-                !./`basename \`pwd\``
-            elseif &filetype == "haskell"
-                !runhaskell %
-            elseif &filetype == "cs"
-                !./%<.exe
-            else
-                !./%<
-            endif
-        endf
-        func! MakeRun()
-            wa
-            if filereadable("Makefile")
-                echo "Found Makefile, running make..."
-                make! run
-            else
-                call Run()
-            endif
-        endf
-        func! RunGdb()
-            :wa
-            if &filetype == "c" || &filetype == "cpp"
-                silent !gdb -q %<
-                redraw!
-            else
-                echo "no Makefile here, and filetype not supported :("
-            endif
-        endf
-        func! MakeGdb()
-            wa
-            if filereadable("Makefile")
-                echo "Found Makefile, running make..."
-                make! gdb
-                redraw!
-            else
-                call RunGdb()
-            endif
-        endf
-        func! RunValgrind()
-            wa
-            elseif &filetype == "c" || &filetype == "cpp"
-                !valgrind --leak-check=full ./%<
-                redraw!
-            else
-                echo "no Makefile here, and filetype not supported :("
-            endif
-        endf
-        func! MakeValgrind()
-            wa
-            if filereadable("Makefile")
-                echo "Found Makefile"
-                silent make! valgrind
-                redraw!
-            else
-                call RunValgrind()
-            endif
-        endf
-" }}}
-
 " Run/compile mappings {{{
-    map <F5> :call MakeGdb()<Enter>
-    imap <F5> <Esc><F5>
-    map <S-F5> :call RunGdb()<Enter>
-    imap <S-F5> <Esc><S-F5>
-    map <C-F5> :call MakeValgrind()<Enter>
-    imap <C-F5> <Esc><C-F5>
-    map <S-C-F5> :call RunValgrind()<Enter>
-    imap <S-C-F5> <Esc><S-C-F5>
-
-    map <F6> :call MakeRun()<Enter>
-    imap <F6> <Esc><F6>
-    map <S-F6> :call Run()<Enter>
-    imap <S-F6> <Esc><S-F6>
-
-    map <F7> :call MakeDebug()<Enter>
-    imap <F7> <Esc><F7>
-    map <S-F7> :call CompileDebug()<Enter>
-    imap <S-F7> <Esc><S-F7>
-    map <C-F7> :call MakeRelease()<Enter>
-    imap <C-F7> <Esc><C-F7>
-    map <S-C-F7> :call Compile()<Enter>
-    imap <S-C-F7> <Esc><S-C-F7>
-
     map <F8> :cope<Enter>:cc<Enter>
     imap <F8> <Esc><F8>i
     map <S-F8> :cclo<Enter>
@@ -444,12 +218,6 @@ augroup END
 
     map <F10> :make<Enter>:!make tests && make view-tests<Enter>
     imap <F10> <Esc><F10>
-
-    " map <S-F10> :qa<Enter>
-    " imap <S-F10> <Esc>:qa<Enter>
 " }}}
 
 set timeoutlen=300
-
-" autocmd BufWrite * retab!
-
