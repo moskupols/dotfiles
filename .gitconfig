@@ -7,5 +7,5 @@
 [push]
 	default = simple
 [core]
-	excludesfile = /home/moskupols/repos/dotfiles/.gitignore
+	excludesfile = /home/fdoer/repos/dotfiles/.gitignore
 	editor = vim
