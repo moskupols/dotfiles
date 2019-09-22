@@ -50,6 +50,7 @@ plugins=(
 
     # taken as is
     git
+    pyenv
 )
 
 source $ZSH/oh-my-zsh.sh
