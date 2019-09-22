@@ -50,7 +50,7 @@ plugins=(
 
     # taken as is
     git
-    catimg
+    pyenv
 )
 
 source $ZSH/oh-my-zsh.sh
