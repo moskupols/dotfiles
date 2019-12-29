@@ -111,24 +111,18 @@
     Plugin 'tpope/vim-fugitive'
     Plugin 'airblade/vim-gitgutter'
 
-    Plugin 'wakatime/vim-wakatime'
-
     Plugin 'scrooloose/nerdcommenter'
 
-    Plugin 'bling/vim-airline'
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
     Plugin 'altercation/vim-colors-solarized'
-
-    Plugin 'SWIG-syntax'
-
-    Plugin 'gerw/vim-latex-suite'
-
-    Plugin 'mbbill/undotree'
 
     call vundle#end()
 " }}}
 
 " appearance {{{
-    set background=light
+    set background=dark
+    let g:solarized_termcolors=16
     color solarized
 
     " if has("conceal")
@@ -156,7 +150,7 @@
     " }}}
 
     " airline {{{
-    let g:airline_theme = 'dark'
+    let g:airline_theme = 'onedark'
     let g:airline_left_sep='›'  " Slightly fancier than '>'
     let g:airline_right_sep='‹'
     " }}}
