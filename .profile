@@ -1,4 +1,4 @@
-export EDITOR=/usr/bin/nvim
+export EDITOR=/usr/bin/vim
 export SUDO_EDITOR="$EDITOR"
 
 # Use common bin from dotfiles
