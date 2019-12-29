@@ -75,11 +75,6 @@
 
     Plug 'iCyMind/NeoSolarized'
 
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    let g:deoplete#enable_at_startup = 1
-
-    Plug 'zchee/deoplete-clang'
-
     call plug#end()
 
 " }}}
