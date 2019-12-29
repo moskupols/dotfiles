@@ -46,7 +46,7 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 terminal = "kitty"
 
 -- {{{ spawn
-spawn = awful.util.spawn
+spawn = awful.spawn
 spawning = function (cmd)
     return function () spawn(cmd) end
 end
@@ -171,12 +171,12 @@ local function set_wallpaper(s)
 end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
-screen.connect_signal("property::geometry", set_wallpaper)
+-- screen.connect_signal("property::geometry", set_wallpaper)
 
 tags = {}
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
-    set_wallpaper(s)
+    -- set_wallpaper(s)
 
     -- Each screen has its own tag table.
     tags[s] = awful.tag({ "1", "2", "3", "4", "5", "Q", "W", "E" }, s, awful.layout.layouts[1])
