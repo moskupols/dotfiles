@@ -118,16 +118,16 @@
 
     Plugin 'scrooloose/nerdcommenter'
 
-    Plugin 'bling/vim-airline'
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
     Plugin 'altercation/vim-colors-solarized'
-    " Plugin 'chase/focuspoint-vim'
-    " Plugin 'Zenburn'
 
     call vundle#end()
 " }}}
 
 " appearance {{{
     set background=dark
+    let g:solarized_termcolors=16
     color solarized
 
     " if has("conceal")
@@ -152,7 +152,7 @@
     " }}}
 
     " airline {{{
-    let g:airline_theme = 'dark'
+    let g:airline_theme = 'onedark'
     let g:airline_left_sep='›'  " Slightly fancier than '>'
     let g:airline_right_sep='‹'
     " }}}
